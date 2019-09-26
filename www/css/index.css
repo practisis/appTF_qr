@@ -1,0 +1,530 @@
+html , body {
+	width:100%;
+	height:100%;
+	margin :0px;
+	top:0px;
+	left:0px;
+	background-image:url('../img/fondo2.png');
+	background-size:cover;
+	background-size: 100% 100%;
+	font-family:helvetica;
+}
+/* ::-webkit-scrollbar { width: 15px; height: 15px;}
+::-webkit-scrollbar-button {  background-color: rgba(236,24,103,0.8); }
+::-webkit-scrollbar-track {  background-color: rgba(236,24,103,0.8);}
+::-webkit-scrollbar-track-piece { background-color: #ffffff;}
+::-webkit-scrollbar-thumb { height: 50px; background-color: rgba(236,24,103,0.8); border-radius: 3px;}
+::-webkit-scrollbar-corner { background-color: rgba(236,24,103,0.8);}}
+::-webkit-resizer { background-color: rgba(236,24,103,0.8);} */
+
+::-webkit-scrollbar {  
+    width: 12px;  
+}  
+::-webkit-scrollbar-track {  
+    background-color: #ccc;  
+    border-left: 1px solid #ccc;  
+}  
+::-webkit-scrollbar-thumb {  
+    background-color: rgba(236,24,103,0.8);  
+}  
+::-webkit-scrollbar-thumb:hover {  
+    background-color: #6B002E;  
+}  
+img{
+	cursor:pointer;
+}
+input{
+	
+	background-color:#EEEDE3;
+	color:#6B002E;
+	
+	border:1px solid #000;
+}
+textarea{
+	resize:none;
+	background-color:#EEEDE3;
+	width:200px;
+	border:1px solid #000;
+}
+a:link   {   
+ text-decoration:none;   
+ color:#4D4D4D;
+}   
+a:visited{   
+ text-decoration:none;   
+ color:#4D4D4D;
+}  
+a:active{   
+ text-decoration:none;   
+ color:#4D4D4D;
+}  
+a:hover{
+color:#fff;
+}
+#contenedor{
+	width:100%;
+	height:100%;
+	position:relative;
+	
+}
+#contenedorInterno{
+	width:960px;
+	height:auto;
+	margin: 0 auto;
+	
+}
+#header{
+	width:100%;
+	height:27.01%;
+}
+.contieneSubMenu1{
+height:100%;
+}
+.contieneSubMenu1:hover{
+	color:#fff;
+	border-radius:5px;
+	background-color:#6B002E;
+}
+
+.contieneSubMenu2{
+height:100%;
+}
+.contieneSubMenu2:hover{
+	color:#fff;
+	border-radius:5px;
+	background-color:#6B002E;
+}
+
+
+.contieneSubMenu3{
+height:100%;
+}
+.contieneSubMenu3:hover{
+	color:#fff;
+	border-radius:5px;
+	background-color:#6B002E;
+}
+
+.contieneSubMenu4{
+height:100%;
+}
+.contieneSubMenu4:hover{
+	color:#fff;
+	border-radius:5px;
+	background-color:#6B002E;
+}
+
+.contieneSubMenu5{
+height:100%;
+}
+.contieneSubMenu5:hover{
+	color:#fff;
+	border-radius:5px;
+	background-color:#6B002E;
+}
+
+
+#ingresoWeb{
+	width:136px;
+	height:24px;
+	background-color:#9A1A32;
+	border-radius:5px;
+	color:#D6D6D6;
+	cursor:pointer;
+	font-size:10px;
+}
+#ingresoWebLight{
+	width:156px;
+	height:24px;
+	background-color:#6bc7dd;
+	border-radius:5px;
+	color:#000;
+	cursor:pointer;
+	font-size:10px;
+}
+#llamanos{
+	width:195px;
+	height:33px;
+	background-color:#9A1A32;
+	color:#fff;
+	border-radius:10px;
+	-webkit-box-shadow: 4px 4px 5px 0px rgba(50, 50, 50, 0.61);
+	-moz-box-shadow:    4px 4px 5px 0px rgba(50, 50, 50, 0.61);
+	box-shadow:         4px 4px 5px 0px rgba(50, 50, 50, 0.61);
+}
+#fondoMenu{
+	width:99.9%;
+	height:73px;
+	background-image:url('imagenes/fondoMenu.png');
+	background-size:cover;
+	background-size:100% 100%;
+	border-radius:20px;
+	-webkit-box-shadow: 5px 5px 11px 0px rgba(48, 50, 50, 0.57);
+	-moz-box-shadow:    5px 5px 11px 0px rgba(48, 50, 50, 0.57);
+	box-shadow:         5px 5px 11px 0px rgba(48, 50, 50, 0.57);
+}
+#banner{
+	width:100%;
+	height:auto;
+	-webkit-box-shadow: 4px 4px 10px 0px rgba(50, 50, 50, 0.61);
+	-moz-box-shadow:    4px 4px 10px 0px rgba(50, 50, 50, 0.61);
+	box-shadow:         4px 4px 10px 0px rgba(50, 50, 50, 0.61);
+}
+#footer{
+	width:100%;
+	height:100%;
+}
+#contenidoFooter{
+	width:100%;
+	height:100%; 
+}
+.subMenuFooter{
+	width:100%;
+	height:100%;
+	border-radius:10px;
+}
+.subMenuFooterColor{
+	margin-top:-6px;
+	width:99.8%;
+	color:#fff;
+	background-color:#9A1A32;
+	-webkit-border-bottom-right-radius: 10px;
+	-webkit-border-bottom-left-radius: 10px;
+	-moz-border-radius-bottomright: 10px;
+	-moz-border-radius-bottomleft: 10px;
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+#pieFooter{
+	width:100%;
+	height:60px;
+	font-size:10px;
+	background-image:url('imagenes/fondoFooter.png');
+	background-size:cover;
+}
+div[id^='circulo']{
+	width:16px;
+	height:16px;
+	border:1px solid rgba(236,24,103,0.8);
+	border-radius:100%;
+	cursor:pointer;
+}
+#circulo1{
+	background-color:#6B002E;
+}
+.textoPequeno{
+	font-size:10px;
+}
+.tablaFooter{
+	font-size:9px;
+}
+#subMenuInterno{
+	width:100%;
+	height:100px;
+	background-color:#6B002E;
+	text-align:left;
+}
+.textosIntermedios{
+	width:80%;
+	height:100%;
+	color:#000;
+	text-align:justify;
+	font-size:18px;
+}
+.agenciaQuito{
+	background-color:#6B002E;
+	color:#fff;
+	border:1px solid rgba(236,24,103,0.8);
+	cursor:pointer;
+}
+.agenciacuenca{
+	color:#6B002E;
+	border:1px solid rgba(236,24,103,0.8);
+	cursor:pointer;
+}
+.agenciaGuayaquil{
+	color:#6B002E;
+	border:1px solid rgba(236,24,103,0.8);
+	cursor:pointer;
+}
+#DirCuenca{
+	display:none;
+}
+#DirGye{
+	display:none;
+}
+.textoContacto{
+	font-size:12px;
+	color:#6B002E;
+}
+#enviaMensaje{
+	width:80%;
+	height:30px;
+	background-color:#6B002E;
+	color:#fff;
+	font-size:16px;
+	font-weight:bolder;	
+	border-radius:5px;
+	cursor:pointer;
+}
+.ciudadNombre{
+	color:#000;
+}
+.ciudadNombre:hover{
+	color:#6B002E;
+	cursor:pointer;
+}
+
+.nombreCiudades{
+
+	font-size:13px;
+	font-weight:bolder;
+}
+.ciudades{
+	
+}
+.triangulo_der1 {
+    width: 0;
+    height: 0;
+    border-top: 7px solid transparent;
+    border-left: 14px solid rgba(236,24,103,0.8);
+    border-bottom: 7px solid transparent;
+}
+.triangulo_der2{
+    width: 0;
+    height: 0;
+    border-top: 7px solid transparent;
+    border-left: 14px solid rgba(236,24,103,0.8);
+    border-bottom: 7px solid transparent;
+}
+#contenidoProductos{
+	width:100%;
+	height:auto;
+	overflow-y:auto;
+	color:#000;
+}
+#menuProductos1{
+	color:#6B002E;
+	font-size: 16px;
+	border:1px solid rgba(236,24,103,0.8);
+	cursor:pointer;
+}
+#menuProductos2{
+	color:#6B002E;
+	font-size: 16px;
+	border:1px solid rgba(236,24,103,0.8);
+}
+#menuProductos2:hover{
+	cursor:pointer;
+}
+#menuProductos3{
+	color:#6B002E;
+	font-size: 16px;
+	border:1px solid rgba(236,24,103,0.8);
+}
+#menuProductos3:hover{
+	cursor:pointer;
+}
+#menuProductos4{
+	color:#6B002E;
+	font-size: 16px;
+	border:1px solid rgba(236,24,103,0.8);
+}
+#menuProductos4:hover{
+	cursor:pointer;
+}
+
+#MenuProductos1{
+	color:#6B002E;
+	font-size: 16px;
+	border:1px solid rgba(236,24,103,0.8);
+	cursor:pointer;
+}
+#MenuProductos2{
+	color:#6B002E;
+	font-size: 16px;
+	border:1px solid rgba(236,24,103,0.8);
+}
+#MenuProductos2:hover{
+	cursor:pointer;
+}
+#MenuProductos3{
+	color:#6B002E;
+	font-size: 16px;
+	border:1px solid rgba(236,24,103,0.8);
+}
+#MenuProductos3:hover{
+	cursor:pointer;
+}
+#MenuProductos4{
+	color:#6B002E;
+	font-size: 16px;
+	border:1px solid rgba(236,24,103,0.8);
+}
+#MenuProductos4:hover{
+	cursor:pointer;
+}
+
+
+#productosDigitales{
+	display:none;
+}
+.tituloProductos{
+	color:#6b002e;
+	font-size:14px;
+	font-weight:bolder;
+}
+.resumenProductos{
+	color:#000;
+	font-size:12px;
+}
+#contenidoDoctrina{  
+	display:none;
+}
+
+#contenidoCompilaciones{ 
+	display:none;
+}
+
+#contenidoJurisprudencia{
+	display:none;
+}
+#contenidoCepNet{
+	color:#000;
+	font-size:13px;
+}
+#contenidoCepWeb{
+	color:#000;
+	font-size:13px;
+	display:none;
+}
+#contenidoCepWebLight{
+	color:#000;
+	font-size:13px;
+	display:none;
+}
+#contenidoEcep{
+	color:#000;
+	font-size:13px;
+	display:none;
+}
+#contieneSumario{
+	width:100%;
+	color:#000;
+	height:auto;
+	overflow-y:hidden;
+	overflow-x:hidden;
+	text-align:left;
+}
+#sumario{
+	width:100%;
+	height:auto;
+	overflow-y:hidden;
+	overflow-x:hidden;
+	font-size:13px;
+	color:#000;
+}
+#trabajo{
+	height:280px;
+	margin:auto;
+	overflow: hidden;
+	position:relative;
+	box-shadow:5px 5px 5px #7f7f7f;
+}
+.resumenBanner{
+	color: #6b002e;
+    font-size: 16px;
+    margin-bottom: 50px;
+    text-align: left;
+    width: 340px;
+	font-weight:bolder;
+}
+.tituloRegistro {
+    border: 2px solid #6b002e;
+    border-radius: 20px;
+    color: #000;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bolder;
+    height: auto;
+    padding-right: 30px;
+    padding-top: 10px;
+	padding-bottom:10px;
+	padding-left:10px;
+    text-align: center;
+}
+.tituloNovedades{
+	font-size:20px;
+	color:#6b002e;
+	text-transform:uppercase;
+}
+.titulos{
+	text-transform:uppercase;
+	font-size:18px;
+	font-weight:bolder;
+}
+#imprime{
+	width:700px;
+	height:500px;
+	box-shadow:5px 5px 5px rgba(236,24,103,0.8);
+	display:none;
+	position:absolute;
+	top:10%;
+	left:20%;
+	background-color:#fff;
+	-webkit-border-top-left-radius: 20px;
+	-webkit-border-bottom-right-radius: 20px;
+	-moz-border-radius-topleft: 20px;
+	-moz-border-radius-bottomright: 20px;
+	border-top-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+}
+#laEquis{
+	text-shadow:2px 2px 2px rgba(236,24,103,0.8);
+	color:red;
+	font-size:20px;
+}
+
+#laEquis:hover{
+	text-shadow:-5px 5px 5px red;
+	color:red;
+	font-size:20px;
+	cursor:pointer;
+}
+#imprimir{
+	width:30px;
+	height:25px;
+	background-color:#6B002E;
+	color:#fff;
+	font-size:20px; 
+	cursor:pointer;
+}
+
+	input[type="radio"]{ display: none; }
+
+label{
+  color:#fff;
+  font-family: Arial;
+  font-size: 14px;
+}
+
+.entero{
+	text-align:center;
+}
+
+	input[type="radio"] + label span{
+	  display: inline-block;
+	  width: 19px;
+	  height: 19px;
+	  background: url(../img/check_radio_sheet.png) -38px top no-repeat;
+	  margin: -1px 4px 0 0;
+	  vertical-align: middle;
+	  cursor:pointer;
+	}
+
+	input[type="radio"]:checked + label span{
+	  background: url(../img/check_radio_sheet.png) -57px top no-repeat;
+	}
+	.cortesia:hover{
+		text-decoration:underline;
+	}

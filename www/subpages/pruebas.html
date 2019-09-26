@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+	<link rel="icon" type="image/png" href="../assets/img/favicon.png">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>Material Kit by Creative Tim</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+
+	<!--     Fonts and icons     -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+
+	<!-- CSS Files -->
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../assets/css/material-kit.css" rel="stylesheet"/>
+
+	<!-- CSS Just for demo purpose, don't include it in your project -->
+	<link href="../assets/css/demo.css" rel="stylesheet" />
+	<style>
+		.pasar_encima{
+			border-bottom:1px solid #00ADEF;color:#fff;
+		}
+		.pasar_encima:hover{
+			background-color:#fff;
+			color:#000 !important;
+		}
+	</style>
+	
+	
+	<script src="../js/jquery.js"></script>
+	<script src="../js/index.js"></script>
+	<script src="../js/jquery-ui.min.js"></script>
+	<script src="../js/bootstrap.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.css" />
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="../boot/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="../boot/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="../boot/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+
+<body class="index-page"  onload = "$('#onlycodigo').focus();">
+<audio id="player" src="bueno.mp3"> </audio>
+<audio id="player1" src="FALSO.mp3"> </audio>
+<audio id="player2" src="ANULADO.mp3"> </audio>
+<!-- Navbar -->
+<nav class="navbar navbar navbar-fixed-top navbar-color-on-scroll" style = 'background-color:rgba(236,24,103,0.8);' id = 'menuNav'>
+	<div class="container">
+        <div class="navbar-header">
+	    	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-index" onclick = 'controlMenu()'>
+	        	<span class="sr-only">Toggle navigation</span>
+	        	<span class="icon-bar"></span>
+	        	<span class="icon-bar"></span>
+	        	<span class="icon-bar"></span>
+	    	</button>
+	    	<a href="http://www.creative-tim.com">
+	        	<div class="logo-container">
+	                <div class="logo" style = 'border:none;border-radius:none;'>
+	                    <img src="../img/logo.png" alt="logo empresa" rel="tooltip" title="sistema de ingreso de tickets" data-placement="bottom" data-html="true">
+	                </div>
+	                <div class="brand">
+	                    Ticketfacil.ec
+	                </div>
+
+
+				</div>
+	      	</a>
+	    </div>
+
+	    <div class="collapse navbar-collapse" id="navigation-index">
+	    	<ul class="nav navbar-nav navbar-right">
+				<li class = 'pasar_encima'>
+					<a href="javascript:void();" onclick = 'location.reload();'>
+						<i class="material-icons">home</i> Inicio
+					</a>
+				</li>
+				
+				
+				<li class = 'pasar_encima'>
+					<a href="javascript:void();" id = '' onclick="$('#popupidconcierto').modal('show');" id="btnbajar">
+						<i class="material-icons">cloud_download</i>Bajar Base
+					</a>
+				</li>
+				
+				<li class = 'pasar_encima'>
+					<a href="javascript:void();" id = '' onclick="subirdatos()" id="btnsubir2">
+						<i class="material-icons">cloud_upload</i>Subir Base
+						<img src="../img/loading.gif" style="max-width:25px;display:none;" id = 'loadSubir' />
+					</a>
+				</li>
+				
+				<li class = 'pasar_encima' id = 'botonReporte'>
+					<a href="#" >
+						<i class="material-icons">contact_mail</i>reporte de ingresos
+					</a>
+				</li>
+				
+				
+				<li class = 'pasar_encima'>
+					<a href="javascript:void();" id = '' onclick="borrarBase()">
+						<i class="material-icons">delete_sweep</i><label id = 'borraBase'>Borrar Base</label>
+					</a>
+				</li>
+				
+				<li class = 'pasar_encima'>
+					<a href="javascript:void();" id = '' onclick="logout()">
+						<i class="material-icons">radio_button_checked</i>Salir
+					</a>
+				</li>
+				
+
+	    	</ul>
+	    </div>
+	</div>
+</nav>
+<!-- End Navbar -->
+	<br><br><br>
+	<div class="wrapper" style = 'margin-top:90px;'>
+
+		<div class="main main-raised">
+			<div class="section section-basic">
+				
+				<div class="container">
+					<div class="title">
+						<h4>Ticketfacil.ec || control de ingreso Evento:<label id = 'num_evento'></label></h4>
+					</div>
+					
+					
+					<div class = 'row'>
+						<div class = 'col-md-12'>
+							<div class="solocodigo" >
+								<div class="form-group label-floating">
+									<label class="control-label">ingrese el codigo del ticket!!</label>
+									<input type="number" class="form-control input-lg" id="onlycodigo" onkeydown="validarBoletocodigo(event);"/>
+								</div>
+								
+								<div class="row" style="margin-top:2%;">
+									<div class="col-lg-12" style="text-align:center;">
+										<button class="btn btn-simple" onclick="validarIngresocodigo()">VALIDAR<div class="ripple-container"></div></button>
+										<img src="../img/loading.gif" style="max-width:25px; display:none;" id="waitvalidarcodigo" />
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					
+					<div class = 'row' ><br/><br/>
+						<div class = 'col-xs-6' style = 'font-size:25px;background-color:#ED1568;height:100px;' >
+							<input value = '0' type = 'text' id = 'no_ingresados' style = 'width:100%;font-size:25px;background-color:#ED1568;border:none;text-align:center;' disabled readonly />  
+							<br><center><span style = 'color:#ccc;font-size:12px;'>Tickets <b>NO</b> Ingresados</span></center>
+						</div>
+						<div class = 'col-xs-6' style = 'font-size:25px;background-color:#00AEEF;height:100px;'>
+							<input value = '0' type = 'text' id = 'ingresados' style = 'width:100%;font-size:25px;background-color:#00AEEF;border:none;text-align:center;' disabled readonly />  
+							<br><center><span style = 'color:#fff;font-size:12px;'>Tickets <b>Ingresados</b></span></center>
+						</div>
+					</div>
+					
+					<div class = 'row' ><br/><br/>
+						<div class = 'col-xs-6' style = 'font-size:25px;background-color:#ED1568;height:100px;' >
+							<input value = '0' type = 'text' id = 'no_ingresados_R' style = 'width:100%;font-size:25px;background-color:#ED1568;border:none;text-align:center;' disabled readonly />  
+							<br><center><span style = 'color:#ccc;font-size:12px;'>REIMPRESOS <b>NO</b> Ingresados </span></center>
+						</div>
+						<div class = 'col-xs-6' style = 'font-size:25px;background-color:#00AEEF;height:100px;'>
+							<input value = '0' type = 'text' id = 'ingresados_R' style = 'width:100%;font-size:25px;background-color:#00AEEF;border:none;text-align:center;' disabled readonly />  
+							<br><center><span style = 'color:#fff;font-size:12px;'>REIMPRESOS <b>Ingresados</b></span></center>
+						</div>
+					</div>
+					
+					
+					
+					<div class = 'row'>
+						<div class = 'col-md-12'>
+							<label style = 'padding:0px;margin:0px;color:red;padding-left:10px;padding-right:10px;' id = 'titulo2'></label>
+							<br>
+							<table id = 'titulo3' class = 'table'>
+							
+							</table>
+							<table id = 'titulo4' class = 'table'>
+							
+							</table>
+							<table id = 'titulo5' class = 'table'>
+							
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		
+	</div>
+	<div class="modal fade" id="popupidconcierto" tabindex="-1" role="dialog" data-backdrop='static'>
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header" style="background-color:#C51D34; color:#fff;">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick = 'cerrar_pop()'>
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="tituloEvento"><br></h4>
+				</div>
+				<div class="modal-body" >
+					<div id = 'recibeJson'></div>
+					<table id = 'cuerpo_localidades' width = '100%' class = 'table'>
+						<tr>
+							<td>
+								<input type = "checkbox" id="chk_all" onclick="selectAll()"  />
+							</td>
+							<td colspan = '2'>
+								<button type="button" class="btn btn-info" onclick = 'bajarTodas()' id = 'bajarTodas'>
+									BAJAR LOCALIDADES SELECCIONADAS
+									<span id="waitsubir4" style="display:none;">bajando...<img src="../img/loading.gif" style="max-width:25px;" /></span>
+								</button>
+							</td>
+						</tr>
+						<tr>
+							<th>
+								<span class="glyphicon glyphicon-ok" aria-hidden="true" style = 'color:#35B084;'></span>
+							</th>
+							<th>
+								id_loc
+							</th>
+							<th>
+								Localidad
+							</th>
+						</tr>
+					</table>
+					
+					<div class="alert alert-warning" role="alert">
+						<input type='hidden' class='form-control input-lg numero_evento' id='myidconcierto' placeholder='Id Concierto' readonly disabled />
+						<!-- <input type='number' class='form-control input-lg' id='localidad' placeholder='Id Localidad'/> -->
+						<!-- <input type='number' class='form-control input-lg' id='clave_segura' placeholder='Ingrese Clave'/> -->
+					</div>
+				</div>
+				<div class="modal-footer">
+					<!-- <button type="button" class="btn btn-primary" onclick='bajardatos();'>Bajar Datos </button> -->
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal fade" id="sms" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content smsback"><br><br><br><br>
+				<div class="modal-header smsback" style="border-bottom:none;">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="titlemodal" style="text-align:center;"></h4>
+				</div>
+				<div class="modal-body smsback" style="text-align:center;">
+					<br>
+					<h2 id="mensaje"></h2>
+					<br>
+					<h3 id="nombre"></h3>
+				</div>
+				<div class="modal-footer smsback" style="border-top:none;">
+					<!--<button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>-->
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="modal fade" id="error1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header" style="background-color:#C51D34; color:#fff;">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">Alerta!</h4>
+				</div>
+				<div class="modal-body">
+					<div class="alert alert-warning" role="alert" style = 'color:#000;'>
+						<span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;
+						<strong>Alerta! </strong>Los campos están vacios.
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+	<script>
+		function controlMenu(){
+			$('#navigation-index').toggle('blind');
+		}
+		saberConcierto();
+		function saberConcierto(){
+			var db = window.openDatabase("Database", "1.0", "TicketMobile", 200000);
+			db.transaction(function(tx){
+				tx.executeSql('SELECT id_con as conci FROM concieto',[],function(tx,results){
+					var registros = results.rows.length;
+					
+					var conci  = results.rows[0].conci;
+					
+					$('#num_evento').html(conci);
+					
+					$('#botonReporte').html('\
+						<a href="#" onclick = "window.open(\'http://www.ticketfacil.ec/ticket2/seguridad/reporte.php?id_con='+conci+'\',\'_blank\')">\
+							<i class="material-icons" >contact_mail</i>reporte de ingresos\
+						</a>\
+						');
+					<!-- alert(conci); -->
+				},errorCB,successCB);
+			});
+		}
+		function bajarTodas(){
+			
+			 $("input[name='locales_check[]']:checked").each(function() {
+				var localidad = $(this).val();
+				var idconcierto=$('#myidconcierto').val();
+				//alert(idconcierto +'<<>>'+localidad);
+				$('#bajarTodas').removeClass('btn btn-info');
+				$('#bajarTodas').addClass('btn btn-danger');
+				$('#bajarTodas').attr('disabled',true);
+				$('#waitsubir4').css('display','block');
+				$.ajax({
+					url: "http://www.lcodigo.com/ticket/apiMovil/bajarMovil_fabricio3.php?idconcierto="+idconcierto+"&localidad="+localidad,
+					//data: {idconcierto:idconcierto,localidad:localidad},
+				}).done(function(response) {
+					
+					
+					//alert(response);
+					if(response != 'error'){
+						var objDatos=JSON.parse(response);
+						var misboletos=objDatos.Boletos;
+						console.log(misboletos.length);
+						var db = window.openDatabase("Database", "1.0", "TicketMobile", 200000);
+						db.transaction(function(tx){
+							for(i=0; i < misboletos.length; i++){
+								var id = misboletos[i].idBoleto; 
+								var barcode = misboletos[i].barcode;
+								var estado = misboletos[i].estado;
+								var id_loc = misboletos[i].id_loc;
+								//var identComprador = misboletos[i].identComprador;
+								var identComprador=2;
+								
+								tx.executeSql("INSERT OR IGNORE INTO Boleto (idBoleto,strBarcode,idLocB,strEstado,identComprador) VALUES (?,?,?,?,?)",[id,barcode,id_loc,estado,identComprador]);
+							
+								tx.executeSql('UPDATE Boleto SET identComprador = ?,strEstado= ? WHERE idBoleto = ?;',[identComprador,estado,id]);
+								
+							}
+						},errorCB,successCB);
+						//$('#recibeJson').html(response);
+						//alert(response);
+						$('#waitbajar').fadeOut('slow');
+						$('#btnbajar').delay(600).fadeIn('slow');
+						
+						
+						<!-- $('#myidconcierto').val(''); -->
+						<!-- $('#clave_segura').val(''); -->
+					} 
+					
+					setTimeout(function(){
+						alert('Localidades bajadas con éxito')
+						$('#waitsubir2').css('display','none');
+						window.location = '';
+					}, 20000);
+					
+				});
+			});
+		}
+		
+		
+		function selectAll(){
+			if($('#chk_all').is(':checked')){
+				$('.locales_check').prop('checked',true);
+			}else{
+				$('.locales_check').prop('checked',false);
+			}
+		}
+		conteo_boletos();
+		function conteo_boletos(){
+			var db = window.openDatabase("Database", "1.0", "TicketMobile", 200000);
+			db.transaction(function(tx){
+				tx.executeSql("SELECT count(idBoleto) as no_vendidos ,strEstado FROM Boleto where strEstado = 'A';",[],function(tx,results){
+					console.log(results);
+					// var registros_no_vendidos = results.items.length;
+					var no_vendidos  = results.rows[0].no_vendidos;
+					//var datos = '';
+					
+					$('#no_ingresados').val(no_vendidos);
+					
+				});
+			},errorCB,successCB);
+			
+			
+			
+			var db = window.openDatabase("Database", "1.0", "TicketMobile", 200000);
+			db.transaction(function(tx){
+				tx.executeSql("SELECT count(idBoleto) as vendidos ,strEstado FROM Boleto where strEstado ='I';",[],function(tx,results){
+					console.log(results);
+					// var registros_no_vendidos = results.items.length;
+					var vendidos  = results.rows[0].vendidos;
+					//var datos = '';
+					
+					$('#ingresados').val(vendidos);
+					
+				});
+			},errorCB,successCB);
+			
+			
+			
+			var db = window.openDatabase("Database", "1.0", "TicketMobile", 200000);
+			db.transaction(function(tx){
+				tx.executeSql("SELECT count(idBoleto) as no_vendidos_r FROM Boleto where strEstado ='ANU' and documentoHISB IS NULL",[],function(tx,results){
+					console.log(results);
+					// var registros_no_vendidos = results.items.length;
+					var no_vendidos_r  = results.rows[0].no_vendidos_r;
+					//var datos = '';
+					
+					$('#no_ingresados_R').val(no_vendidos_r);
+					
+				});
+			},errorCB,successCB);
+			
+			
+			
+			
+			var db = window.openDatabase("Database", "1.0", "TicketMobile", 200000);
+			db.transaction(function(tx){
+				tx.executeSql("SELECT count(idBoleto) as vendidos_r ,strEstado FROM Boleto where documentoHISB = 'I' and strEstado ='ANU';",[],function(tx,results){
+					console.log(results);
+					// var registros_no_vendidos = results.items.length;
+					var vendidos_r  = results.rows[0].vendidos_r;
+					//var datos = '';
+					
+					$('#ingresados_R').val(vendidos_r);
+					
+				});
+			},errorCB,successCB);
+		}
+
+		
+		ver_localidades_bajadas();
+		function ver_localidades_bajadas(){
+			var db = window.openDatabase("Database", "1.0", "TicketMobile", 200000);
+			db.transaction(function(tx){
+				tx.executeSql('SELECT l.nombre as nombreL , count(idBoleto) as cuantos , l.id_loc as localidad FROM Boleto as b , localidad as l where b.idLocB = l.id_loc and b.strEstado <> "ANU" group by l.id_loc;',[],function(tx,results){
+					var registro = results.rows.length;
+					//alert(registro);
+					var datos = '';
+					var tr = '';
+					var sumaCuantos = 0; 
+					tr += '<tr  ><th>Localidades Bajadas:</th></tr>';
+					var anulado = 'ANU';
+					var mm=0;
+					for(var j = 0; j < registro; j++){
+					
+						var row1 = results.rows.item(j);
+						var nombreL = row1.nombreL;
+						var cuantos = row1.cuantos;
+						var localidad = row1.localidad;
+						<!-- var cuantos2=''; -->
+						<!-- db.transaction(function(tx){ -->
+							<!-- alert("SELECT count(idBoleto) as cuantos2 FROM Boleto as b where b.idLocB = "+localidad+" and strEstado = '"+anulado+"';"); -->
+							
+						<!-- },errorCB,successCB); -->
+						
+						//alert('<<>>'+ nombreL);
+						tr += '	<tr class = "localidadesBajadas" >\
+							<td>\
+								'+nombreL+' <div id = "saberAnulados_'+localidad+'"></div> </td>\
+							<td style = "text-align:center;">\
+								'+cuantos+' <input type = "hidden" class = "cuantos" value = "'+cuantos+'"  />\
+							</td>\
+						</tr>';
+						sumaCuantos = (parseInt(sumaCuantos) + parseInt(cuantos));
+						<!-- alert(cuantos + ' ' + sumaCuantos); -->
+						mm++;
+					}
+					
+					tr += '	<tr style = "display:none;">\
+								<td style = "color:red;">\
+									Total\
+								</td>\
+								<td style = "background-color: #171A1B;color: #1E9F75;text-align:center; font-size: 20px">\
+									'+sumaCuantos+'\
+									<input type = "text" value = "'+sumaCuantos+'" id = "sumaCuantos" />  \
+								</td>\
+							</tr>';
+					$('#titulo3').html(tr);
+					
+				},errorCB,successCB);
+			});
+			
+			
+			
+			
+			
+			
+			
+			
+			var db = window.openDatabase("Database", "1.0", "TicketMobile", 200000);
+			db.transaction(function(tx){
+				tx.executeSql('SELECT l.nombre as nombreL , count(idBoleto) as cuantos2 , l.id_loc as localidad FROM Boleto as b , localidad as l where b.idLocB = l.id_loc and b.strEstado = "ANU" group by l.id_loc;',[],function(tx,results2){
+					var registro2 = results2.rows.length;
+					//alert(registro);
+					var datos = '';
+					var tr2 = '';
+					var sumaCuantos2 = 0; 
+					var anulado = 'ANU';
+					var mm=0;
+					for(var k = 0; k < registro2; k++){
+					
+						var row2 = results2.rows.item(k);
+						var nombreL = row2.nombreL;
+						var cuantos2 = row2.cuantos2;
+						var localidad = row2.localidad;
+						<!-- alert('#saberAnulados_'+localidad+'') -->
+						$('#saberAnulados_'+localidad+'').css('color','red')
+						$('#saberAnulados_'+localidad+'').html('Esta localidad tiene : ' + cuantos2 + '  Tickets reimpresos' )
+						sumaCuantos2 = (parseInt(sumaCuantos2) + parseInt(cuantos2));
+					}
+					
+					tr2 += '	<tr style = "display:none;">\
+								<td style = "color:red;">\
+									Total\
+								</td>\
+								<td style = "background-color: #171A1B;color: #1E9F75;text-align:center; font-size: 20px">\
+									'+sumaCuantos2+'\
+									<input type = "text" value = "'+sumaCuantos2+'" id = "sumaCuantos2" />  \
+								</td>\
+							</tr>';
+					$('#titulo4').html(tr2);
+					setTimeout(function(){
+						var suma1 = $('#sumaCuantos').val()
+						var suma2 = $('#sumaCuantos2').val()
+						<!-- alert(parseInt(suma1) +'+'+ parseInt(suma2)) -->
+						var suma3 = (parseInt(suma1) + parseInt(suma2));
+						$('#titulo5').html('<tr><td style = "color:red;">Total</td><td style= "background-color: #171A1B;color: #1E9F75;text-align:center; font-size: 20px">'+suma3+'</td></tr>');
+					}, 2000);
+					
+				},errorCB,successCB);
+			});
+			
+			
+		}
+		
+		
+		//$( document ).ready(function() {
+			
+			<!-- setTimeout(function(){ -->
+			<!-- var top = $('#titulo3').height(); -->
+			<!-- //	alert(top); -->
+				<!-- $( "html, body " ).animate({ -->
+					<!-- scrollTop: top, -->
+				<!-- },1500,function(){}); -->
+			<!-- }, 1000); -->
+			
+		//});
+		
+		
+		function borrarBase(){
+			
+			if(confirm('Esta seguro que desea borrar la base!!!')){
+				$('#borraBase').html('Espere... Borrando la base!!!')
+				var db = window.openDatabase("Database", "1.0", "TicketMobile", 200000);
+				db.transaction(function(tx){
+					tx.executeSql("SELECT * FROM Boleto where strEstado=='A';",[],function(tx,results){
+						var registros = results.rows.length;
+						if(registros == 0){
+							alert('no hay boletos por sincronizar');
+							var db = window.openDatabase("Database", "1.0", "TicketMobile", 200000);
+							db.transaction(function(tx){
+								tx.executeSql('DELETE FROM Boleto;',[],function(tx,results){},errorCB,successCB);
+								tx.executeSql('DELETE FROM localidad;',[],function(tx,results){},errorCB,successCB);
+								tx.executeSql('DELETE FROM concieto;',[],function(tx,results){},errorCB,successCB);
+							});
+							
+							setTimeout(function(){
+								alert('se ha borrado la informacion');
+								logout();
+							}, 2500);
+						}else{
+							alert('SE PROCEDERA A BORRAR LA BASE DE DATOS , \n ESTE PROCESO ES IRREVERSIBLE');
+							var db = window.openDatabase("Database", "1.0", "TicketMobile", 200000);
+							db.transaction(function(tx){
+								tx.executeSql('DELETE FROM Boleto;',[],function(tx,results){},errorCB,successCB);
+								tx.executeSql('DELETE FROM localidad;',[],function(tx,results){},errorCB,successCB);
+								tx.executeSql('DELETE FROM concieto;',[],function(tx,results){},errorCB,successCB);
+							});
+							
+							setTimeout(function(){
+								alert('se ha borrado la informacion');
+								logout();
+							}, 2500);
+						}
+					},errorCB,successCB);
+				});
+			}else{
+				alert('se aguevo');
+			}
+		}
+		ver_concierto();
+		function ver_concierto(){
+	//	alert('hola');
+			var db = window.openDatabase("Database", "1.0", "TicketMobile", 200000);
+			db.transaction(function(tx){
+				tx.executeSql('SELECT * FROM concieto group by id_con;',[],function(tx,results){
+					var registro = results.rows.length;
+					//alert(registro);
+					var datos = '';
+					for(var j = 0; j < registro; j++){
+						var row1 = results.rows.item(j);
+						var id_con = row1.id_con;
+						var nombre_c = row1.nombre_c;
+						//alert(id_con +'<<>>'+ nombre_c);
+						$('#tituloEvento').html('LOCALIDADES EVENTO : ' + nombre_c);
+						$('#titulo2').html('EVENTO : ' + nombre_c);
+						$('.numero_evento').val(id_con);
+					}
+					
+				},errorCB,successCB);
+			});
+		}
+		
+		
+		function ver_localidades(){
+			var db = window.openDatabase("Database", "1.0", "TicketMobile", 200000);
+			db.transaction(function(tx){
+				tx.executeSql('SELECT * FROM localidad group by id_loc;',[],function(tx,results){
+					var registros = results.rows.length;
+					var datos = '';
+					
+					for(var i = 0; i < registros; i++){
+						
+						var row = results.rows.item(i);
+						var id_loc = row.id_loc;
+						var nombre = row.nombre;
+						$('#cuerpo_localidades').append('<tr><td><input type = "checkbox" class = "locales_check" name="locales_check[]" value = "'+id_loc+'"   /></td><td>'+id_loc+'</td><td>'+nombre+'</td></tr>');
+					}
+					
+				},errorCB,successCB);
+			});
+		}
+	$(document).ready(function(){
+		//ver_concierto();
+		ver_localidades();
+		$('#codigo').focus();
+		
+	});
+
+	function selectmenu(data){
+		if(data == 1){
+			$('.menu').fadeOut('slow');
+			$('.solocodigo').delay(600).fadeIn('slow');
+		}else{
+			$('.menu').fadeOut('slow');
+			$('.cedulacodigo').delay(600).fadeIn('slow');
+		}
+	}
+
+	function saltar(e){
+		if(e.which == 13){
+			$('#cedula').focus();
+		}
+	}
+
+	function logout(){
+		window.location = '../index.html'; 
+	}
+	</script>
+	<!--   Core JS Files   -->
+	<script src="../assets/js/jquery.min.js" type="text/javascript"></script>
+	<script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="../assets/js/material.min.js"></script>
+
+	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+	<script src="../assets/js/nouislider.min.js" type="text/javascript"></script>
+
+	<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
+	<script src="../assets/js/bootstrap-datepicker.js" type="text/javascript"></script>
+
+	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
+	<script src="../assets/js/material-kit.js" type="text/javascript"></script>
+
+	<script type="text/javascript">
+
+		<!-- $().ready(function(){ -->
+			<!-- // the body of this function is in ../assets/material-kit.js -->
+			<!-- materialKit.initSliders(); -->
+            <!-- window_width = $(window).width(); -->
+
+            <!-- if (window_width >= 992){ -->
+                <!-- big_image = $('.wrapper > .header'); -->
+
+				<!-- $(window).on('scroll', materialKitDemo.checkScrollForParallax); -->
+			<!-- } -->
+
+		<!-- }); -->
+	</script>
+</html>

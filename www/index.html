@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+	<link rel="icon" type="image/png" href="assets/img/favicon.png">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>Login1</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+
+	<!--     Fonts and icons     -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+
+	<!-- CSS Files -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/material-kit.css" rel="stylesheet"/>
+	<script src="js/jquery.js"></script>
+	<script src="js/index.js"></script>
+	<script src="js/jquery-ui.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<style>
+		/* fallback */
+		@font-face {
+		  font-family: 'Material Icons';
+		  font-style: normal;
+		  font-weight: 400;
+		  src: url(fonts/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+		}
+
+		.material-icons {
+		  font-family: 'Material Icons';
+		  font-weight: normal;
+		  font-style: normal;
+		  font-size: 24px;
+		  line-height: 1;
+		  letter-spacing: normal;
+		  text-transform: none;
+		  display: inline-block;
+		  white-space: nowrap;
+		  word-wrap: normal;
+		  direction: ltr;
+		  -moz-font-feature-settings: 'liga';
+		  -moz-osx-font-smoothing: grayscale;
+		}
+		#status{
+			display: inline-block;
+			padding: 0.5rem;
+			border-radius: 5px;
+			margin: 1rem;
+			position: relative;
+			top: -35px;
+			left: 100px;
+			font-size:12px;
+			color: white;
+		}
+	</style>
+</head>
+
+<body class="signup-page">
+	<nav class="navbar navbar-transparent navbar-absolute">
+    	<div class="container">
+        	<!-- Brand and toggle get grouped for better mobile display -->
+        	<div class="navbar-header">
+        		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example">
+            		<span class="sr-only">Toggle navigation</span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+        		</button>
+        		<a name="">
+					<div class="logo-container">
+						<div class="logo" style = 'border:none;border-radius:none;'>
+							<img src="img/logo.png" style = 'width:100px;'  alt="logo empresa" rel="tooltip" title="sistema de ingreso de tickets" data-placement="bottom" data-html="true">
+						</div>
+						<div class="brand">
+							 
+							<p id="status" onclick = "detectarConexion()" ></p>
+							
+						</div>
+
+
+					</div>
+				</a>
+        	</div>
+
+        	<div class="collapse navbar-collapse" id="navigation-example">
+        		
+        	</div>
+    	</div>
+    </nav>
+
+    <div class="wrapper">
+		<div class="header header-filter" style="background-image: url('assets/img/city.jpg'); background-size: cover; background-position: top center;">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+						<div class="card card-signup">
+							<form class="form" method="" action="">
+								<div class="header header-primary text-center" style = 'background-color:#EC1867;'>
+									<h4>Log in <b>Ticketfacil.ec 2.0</b></h4>
+								</div>
+								<div class="content">
+									<div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">assignment</i>
+											<input type = 'hidden' id = 'detectorInternet'  />
+										</span>
+										<input type="number" class="form-control" placeholder="# Evento ej : 118" id = 'id_con'/>
+									</div>
+									
+									<div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">lock_outline</i>
+										</span>
+										<input type="number" placeholder="Clave del Evento" class="form-control" id = 'claveEvento'/>
+									</div>
+									
+									
+									<div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">face</i>
+										</span>
+										<input type="text" placeholder="EMPLEADO" class="form-control" id = 'empleado'/>
+									</div>
+									
+									
+									<div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">vpn_key</i>
+										</span>
+										<select class = 'form-control' id = 'tipo_acceso'  >
+											<option value = '' >Seleccione...</option>
+											<option value = 'cajero' >Cajero</option>
+											<option value = 'lectora' >Accesos</option>
+										</select>
+									</div>
+									
+
+									<!-- If you want to add a checkbox to this form, uncomment this code
+
+									<div class="checkbox">
+										<label>
+											<input type="checkbox" name="optionsCheckboxes" checked>
+											Subscribe to newsletter
+										</label>
+									</div> -->
+								</div>
+								<div class="footer text-center">
+									<a href="javascript:void();" class="btn btn-simple btn-primary btn-lg" id = 'sin_loguear' style = 'display:none;' onclick="valida_log_acceso()">Ingresar</a>
+									<a href="javascript:void();" class="btn btn-simple btn-primary btn-lg" id = 'ya_logueado' onclick="valida_log_acceso_conSesion()">Ingresar</a>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+    </div>
+
+
+</body>
+		<script>
+			detectarConexion();
+			function detectarConexion(){
+				var s = document.getElementById('status');
+				var d = document.getElementById('detectorInternet');
+				
+				s.className = navigator.onLine ? '<i class="material-icons online">wifi</i> <span class ="contenedorOnline">Online</span>' : '<i class="material-icons offline">wifi_off</i><span class ="contenedorOnline">OffLine</span>';
+				s.innerHTML = navigator.onLine ? '<i class="material-icons online">wifi</i> <span class ="contenedorOnline">Online</span>' : '<i class="material-icons offline">wifi_off</i><span class ="contenedorOnline">OffLine</span>';  
+				d.value =  navigator.onLine ? 1 : 0 ;
+				
+				
+			}
+			setInterval(function () {
+				detectarConexion();
+			}, 60000);
+			ver_sesiones(); 
+			function ver_sesiones(){
+				var db = window.openDatabase("Database", "1.0", "TicketMobile", 200000);
+				db.transaction(function(tx){
+					tx.executeSql('SELECT * FROM concieto',[],function(tx,results){
+						var registros = results.rows.length;
+						if(registros == 0){
+							//alert('no hay');
+							$('#sin_loguear').fadeIn('slow');
+							$('#ya_logueado').css('display','none');
+						}else{
+							//alert('si hay');
+							$('#sin_loguear').css('display','none');
+							$('#ya_logueado').fadeIn('slow');
+						}
+					},errorCB,successCB);
+				});
+			}
+			function valida_log_acceso_conSesion(){
+				window.location = 'subpages/ingreso.html';
+			}
+			function valida_log_acceso(){
+				var claveEvento = $('#claveEvento').val();
+				var id_con = $('#id_con').val();
+				var empleado = $('#empleado').val();
+				var tipo_acceso = $('#tipo_acceso').val();
+				var base = 1;
+				if(claveEvento == ''){
+					alert('ingrese la clave del evento');
+				}
+				
+				if(id_con == ''){
+					alert('ingrese el identificador del evento');
+				}
+				
+				if(empleado == ''){
+					alert('ingrese el nombre del empleado');
+				}
+				
+				if(tipo_acceso == ''){
+					alert('seleccione tipo de acceso');
+				}
+				
+				if(empleado == '' || claveEvento == '' || id_con == '' || tipo_acceso == ''){
+					
+				}else{
+					$.post("https://www.ticketfacil.ec/ticket2/controlAccesos/baja_localidadades_clave.php",{ 
+						id_con : id_con , claveEvento : claveEvento  ,base :  base
+					}).done(function(data){
+						alert(data);
+						if($.trim(data)=='error'){
+							alert('no hay datos para ese evento : ' + id_con)
+						}else if($.trim(data)=='vacio'){
+							alert('la clave ingresada para el evento : ' + id_con + ' es incorrecta , revise y vuelva a intentarlo!!!' )
+						}else{
+							var res = data.split("|"); 
+							//alert(res[1]);
+							var objDatos=JSON.parse(res[0]);
+							var locales=objDatos.Localidades;
+							<!-- alert(locales.length); -->
+							var db = window.openDatabase("Database", "1.0", "TicketMobile", 200000);
+							db.transaction(function(tx){
+								var idd = 1000;
+								for(i=0; i < locales.length; i++){
+									var idDe = (idd + i);
+									var NomDesc = 'especial(sello)';
+									
+									var idLocalidad = locales[i].idLocalidad; 
+									var strDescripcionL = locales[i].strDescripcionL;
+									var tipo = 1;
+									tx.executeSql("INSERT OR IGNORE INTO localidad (id_con,id_loc,nombre) VALUES (?,?,?)",[id_con,idLocalidad,strDescripcionL]);
+									
+									tx.executeSql("INSERT OR IGNORE INTO descuentos (id_desc,nombre,localidad, tipo) VALUES (?,?,?,?)",[idDe,NomDesc,idLocalidad,tipo]);
+								
+									tx.executeSql('UPDATE localidad SET id_loc = ?,nombre= ? WHERE id_loc = ?;',[idLocalidad,strDescripcionL,idLocalidad]);
+									
+								}
+									tx.executeSql("INSERT INTO concieto (id_con,nombre_c,es_para_feria) VALUES (?,?,?)",[id_con,res[1],res[2]]);
+									
+									tx.executeSql("INSERT OR IGNORE INTO empleado (nombre,perfil) VALUES (?,?)",[empleado,tipo_acceso]);
+							},errorCB,successCB);
+							
+							
+							alert("Datos descargado con éxito.");
+							window.location = 'subpages/ingreso.html';
+						}
+					}).fail(function(xhr, status, error) {
+						alert(status);
+					});	
+				}
+			}
+		</script>
+	<!--   Core JS Files   -->
+	<script src="assets/js/jquery.min.js" type="text/javascript"></script>
+	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="assets/js/material.min.js"></script>
+
+	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+	<script src="assets/js/nouislider.min.js" type="text/javascript"></script>
+
+	<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
+	<script src="assets/js/bootstrap-datepicker.js" type="text/javascript"></script>
+
+	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
+	<script src="assets/js/material-kit.js" type="text/javascript"></script>
+
+</html>

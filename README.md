@@ -1,1 +1,1 @@
-# appTF_qr
+# appLectorTF

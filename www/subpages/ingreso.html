@@ -1,0 +1,787 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+	<link rel="icon" type="image/png" href="../assets/img/favicon.png">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>control de ingreso</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+
+	<!--     Fonts and icons     -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+
+	<!-- CSS Files -->
+    <link href="../css/index.css" rel="stylesheet" />
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../assets/css/material-kit.css" rel="stylesheet"/>
+
+	<!-- CSS Just for demo purpose, don't include it in your project -->
+	<link href="../assets/css/demo.css" rel="stylesheet" />
+	<style>
+		.pasar_encima{
+			border-bottom:1px solid #00ADEF;color:#fff;
+		}
+		.pasar_encima:hover{
+			background-color:#fff;
+			color:#000 !important;
+		}
+		#status{
+			display: inline-block;
+			padding: 0.5rem;
+			border-radius: 5px;
+			margin: 1rem;
+			position: relative;
+			top: -35px;
+			left: 100px;
+			font-size:12px;
+			color: white;
+		}
+
+		
+	</style>
+	
+	
+	<script src="../js/jquery.js"></script>
+	<script src="../js/index.js"></script>
+	<script src="../js/template.js"></script>
+	<script src="../js/jquery-ui.min.js"></script>
+	<script src="../js/bootstrap.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.css" />
+	<!-- Latest compiled and minified CSS -->
+	
+</head>
+
+<body class="index-page"  onload = "saberTipoPerfil();" id = 'body' > 
+<audio id="player" src="bueno.mp3"> </audio>
+<audio id="player1" src="FALSO.mp3"> </audio>
+<audio id="player2" src="ANULADO.mp3"> </audio>
+<!-- Navbar -->
+<nav class="navbar navbar navbar-fixed-top navbar-color-on-scroll" style = 'background-color:rgba(236,24,103,0.8);' id = 'menuNav'>
+	<div class="container">
+        <div class="navbar-header">
+	    	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-index" onclick = 'controlMenu()'>
+	        	<span class="sr-only">Toggle navigation</span>
+	        	<span class="icon-bar"></span>
+	        	<span class="icon-bar"></span>
+	        	<span class="icon-bar"></span>
+	    	</button>
+	    	<a name="">
+	        	<div class="logo-container">
+	                <div class="logo" style = 'border:none;border-radius:none;'>
+	                    <img src="../img/logo.png" alt="logo empresa" rel="tooltip" title="sistema de ingreso de tickets" data-placement="bottom" data-html="true">
+	                </div>
+	                <div class="brand">
+	                   
+						<p id="status" onclick = "detectarConexion()" ></p>
+						
+	                </div>
+
+
+				</div>
+	      	</a>
+	    </div>
+
+	    <div class="collapse navbar-collapse" id="navigation-index">
+	    	<ul class="nav navbar-nav navbar-right">
+				<li class = 'pasar_encima'>
+					<a href="javascript:void();" onclick = 'location.reload();'> 
+						<i class="material-icons">home</i> Inicio
+					</a>
+				</li>
+				
+				
+				<li class = 'pasar_encima'>
+					<a href="javascript:void();"  onclick = " $('#popupidconcierto').modal('show'); " >
+						<i class="material-icons">cloud_download</i>Bajar Base
+					</a>
+				</li>
+				
+				<li class = 'pasar_encima'>
+					<a href="javascript:void();"  onclick = " $('#bajarQr').modal('show'); " >
+						<i class="material-icons">cloud_download</i>Bajar QR
+					</a>
+				</li>
+				
+				<li class = 'pasar_encima paraCajas' style = 'padding-top:10px;padding-bottom:10px;' >
+					<a href="javascript:void();"  onclick="sincroniza()" class = 'paraCajas' >
+						<i class="material-icons">cloud_download</i> <span id="btnbajar22" >Sincronizar Tickets Especiales </span>
+					</a>
+				</li>
+				
+				<li class = 'pasar_encima paraLectora' style = 'padding-top:10px;padding-bottom:10px;' >
+					<a href="javascript:void();"  onclick="subirdatos()" id="btnsubir2" class = 'paraLectora'>
+						<i class="material-icons">cloud_upload</i>Subir Base
+						<img src="../img/loading.gif" style="max-width:25px;display:none;" id = 'loadSubir' />
+					</a>
+				</li>
+				
+				<li class = 'pasar_encima paraLectora' id = 'botonReporte' style = 'padding-top:10px;padding-bottom:10px;'>
+					<a href="#" class = 'paraLectora'>
+						<i class="material-icons">contact_mail</i>reporte de ingresos
+					</a>
+				</li>
+				
+				
+				<li class = 'pasar_encima'>
+					<a href="javascript:void();" id = '' onclick="borrarBase()">
+						<i class="material-icons">delete_sweep</i><label id = 'borraBase'>Borrar Base</label>
+					</a>
+				</li>
+				
+				<li class = 'pasar_encima'>
+					<a href="javascript:void();" id = '' onclick="logout()">
+						<i class="material-icons">radio_button_checked</i>Salir
+					</a>
+				</li>
+				
+
+	    	</ul>
+	    </div>
+	</div>
+</nav>
+<!-- End Navbar -->
+	<br><br><br>
+	<div class="wrapper" style = 'margin-top:90px;'>
+
+		<div class="main main-raised">
+			<div class="section section-basic">
+				<iframe src='prueba.html' id='iframe1' width="110px" height="50px" frameborder="0"></iframe> Ticketfacil.ec 2.0
+				<label style = 'float:right;margin-right:15px;cursor:pointer;display:none;' onclick = "$('#ver_log_errores').modal('show')" class = 'paraLectora'> Ver Log Errores</label>
+				<input type = 'hidden' id = 'detectorInternet'  />
+				<label style = 'float:right;margin-right:15px;cursor:pointer;display:none;' onclick = "$('#ver_boletos_localidad').modal('show')" class = 'paraLectora' > Ver Boletos vs Localidad</label>
+				<label style = 'float:right;margin-right:15px;cursor:pointer;display:none;' onclick = "$('#cajas').modal('show')" class = 'paraCajas'  > Cajas</label>
+				
+				<input type = "hidden"  id = "reloj_mundial" disabled readonly style = 'border:none;color:blue;' />
+				<div class="container" >
+					<div class="title">
+						<h4>Ticketfacil.ec || control de ingreso Evento:<input type = 'text' id = 'num_evento' style = 'text-transform:uppercase;border:none;width:100px;text-align:center;' disabled readonly /></h4>
+					</div>
+					
+					<div class="title">
+						<h4>EMPLEADO ACTUAL   :  <input type = 'text' id = 'nom_empleado' style = 'text-transform:uppercase;border:none;text-align:center;' disabled readonly /></h4>
+						<h4>PERFIL   :  <input type = 'text' id = 'perfil_empleado' disabled readonly /></h4>
+					</div>
+					
+					<div class="title" id = 'mensajeConteo' >
+					
+					</div>
+				</div><hr>
+				<div class="container" id = 'lectora' style = 'display:none;' >
+					
+					
+					
+					<div class = 'row'>
+						<div class = 'col-md-12'>
+							<div class="solocodigo" >
+								<div class="form-group label-floating">
+									<label class="control-label">ingrese el codigo del ticket!!</label>
+									<input type="number" class="form-control input-lg" id="onlycodigo" onkeydown="validarBoletocodigo(event);"/>
+								</div>
+								
+								<div class="row" style="margin-top:2%;">
+									<div class="col-lg-12" style="text-align:center;">
+										<button class="btn btn-simple" onclick="validarIngresocodigo()">VALIDAR<div class="ripple-container"></div></button>
+										<img src="../img/loading.gif" style="max-width:25px; display:none;" id="waitvalidarcodigo" />
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					
+					<div class = 'row' ><br/><br/>
+						<div class = 'col-xs-6' style = 'font-size:25px;background-color:#ED1568;height:100px;' >
+							<input value = '0' type = 'text' id = 'no_ingresados' style = 'width:100%;font-size:25px;background-color:#ED1568;border:none;text-align:center;' disabled readonly />  
+							<br><center><span style = 'color:#ccc;font-size:12px;'>Tickets <b>NO</b> Ingresados</span></center>
+						</div>
+						<div class = 'col-xs-6' style = 'font-size:25px;background-color:#00AEEF;height:100px;'>
+							<input value = '0' type = 'text' id = 'ingresados' style = 'width:100%;font-size:25px;background-color:#00AEEF;border:none;text-align:center;' disabled readonly />  
+							<br><center><span style = 'color:#fff;font-size:12px;'>Tickets <b>Ingresados</b></span></center>
+						</div>
+					</div>
+					
+					<div class = 'row' ><br/><br/>
+						<div class = 'col-xs-6' style = 'font-size:25px;background-color:#ED1568;height:100px;' >
+							<input value = '0' type = 'text' id = 'no_ingresados_R' style = 'width:100%;font-size:25px;background-color:#ED1568;border:none;text-align:center;' disabled readonly />  
+							<br><center><span style = 'color:#ccc;font-size:12px;'>REIMPRESOS <b>NO</b> Ingresados </span></center>
+						</div>
+						<div class = 'col-xs-6' style = 'font-size:25px;background-color:#00AEEF;height:100px;'>
+							<input value = '0' type = 'text' id = 'ingresados_R' style = 'width:100%;font-size:25px;background-color:#00AEEF;border:none;text-align:center;' disabled readonly />  
+							<br><center><span style = 'color:#fff;font-size:12px;'>REIMPRESOS <b>Ingresados</b></span></center>
+						</div>
+					</div>
+					
+					
+					
+					<div class = 'row'>
+						<div class = 'col-md-12'>
+							<label style = 'padding:0px;margin:0px;color:red;padding-left:10px;padding-right:10px;' id = 'titulo2'></label>
+							<br>
+							<table id = 'titulo3' class = 'table'>
+							
+							</table>
+							<table id = 'titulo4' class = 'table'>
+							
+							</table>
+							<table id = 'titulo5' class = 'table'>
+							
+							</table>
+						</div>
+					</div>
+				</div>
+				
+				<div class="container" id = 'cajero' style = 'display:none;' >
+					<div class="table-responsive">
+						
+							<table class="table table-bordered table table-condensed" id = 'contieneOpDescuentos' >
+								<tr>
+									<td colspan = '2' >
+										<center>Tipo de Descuentos : </center>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<input type="radio" id="r1" name="tipoConcierto" checked value = "0" onclick = "seleccionaTipoDescuento(0)" />
+										<label for="r1" style = "font-size:10px;" ><span></span>Ninguno</label>
+									</td>
+									<td>
+										<input type="radio" id="r2" name="tipoConcierto" value = "1" onclick = "seleccionaTipoDescuento(1)"/>
+										<label for="r2" style = "font-size:10px;" ><span></span>Especial</label>
+									</td>
+								</tr>
+							</table>
+						
+						
+						<input onkeydown="ingresoTicket(event);" type = "number" id = "ingBarcode" class = "form-control"  placeholder = 'ingrese ticket' />
+						<input onkeydown="validarCedula(event);" type = "number" id = "ingCedula" class = "form-control"  readonly disabled placeholder = 'ingrese cedula' />
+						<input type = "text" id = "controlTiposTickets" class = "form-control"  readonly disabled  value = "0" />
+					</div>
+					
+					<div class = 'row' ><br/><br/>
+						<div class = 'col-xs-6' style = 'font-size:25px;background-color:#ED1568;height:100px;' >
+							<input value = '0' type = 'text' class = 'no_ingresados' id = 'no_ingresados' style = 'width:100%;font-size:25px;background-color:#ED1568;border:none;text-align:center;' disabled readonly />  
+							<br><center><span style = 'color:#ccc;font-size:12px;'>Tickets <b>NO</b> Ingresados</span></center>
+						</div>
+						<div class = 'col-xs-6' style = 'font-size:25px;background-color:#00AEEF;height:100px;'>
+							<input value = '0' type = 'text' class = 'ingresados' id = 'ingresados' style = 'width:100%;font-size:25px;background-color:#00AEEF;border:none;text-align:center;' disabled readonly />  
+							<br><center><span style = 'color:#fff;font-size:12px;'>Tickets <b>Ingresados</b></span></center>
+						</div>
+					</div>
+					
+					<div class = 'row' ><br/><br/>
+						<div class = 'col-xs-6' style = 'font-size:25px;background-color:#ED1568;height:100px;' >
+							<input value = '0' type = 'text' class = 'no_ingresados_R'  id = 'no_ingresados_R' style = 'width:100%;font-size:25px;background-color:#ED1568;border:none;text-align:center;' disabled readonly />  
+							<br><center><span style = 'color:#ccc;font-size:12px;'>REIMPRESOS <b>NO</b> Ingresados </span></center>
+						</div>
+						<div class = 'col-xs-6' style = 'font-size:25px;background-color:#00AEEF;height:100px;'>
+							<input value = '0' type = 'text' class = 'ingresados_R' id = 'ingresados_R' style = 'width:100%;font-size:25px;background-color:#00AEEF;border:none;text-align:center;' disabled readonly />  
+							<br><center><span style = 'color:#fff;font-size:12px;'>REIMPRESOS <b>Ingresados</b></span></center>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		
+	</div>
+	
+	<div data-keyboard="false" data-backdrop="static" class="modal fade" id="bajarQr" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style = 'display:none;padding-right:2%;padding-left:2%' >
+		<div class="modal-dialog" role="document" >
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close" ><span aria-hidden="true">&times;</span></button>
+					<p class = 'alert-info' id = 'parrafoTickets' >
+						<span class="glyphicon glyphicon-alert" aria-hidden="true"></span>
+						&nbsp;&nbsp;<strong>DESCARGAR CODIGOS QR</strong>&nbsp; <span id = 'tipoTickets' > (Venta en Línea) </span>
+					</p>
+				</div>
+				<div class="modal-body" id = "cuerpoQrs" >
+					Modulo para descargar toda la venta en linea 
+				</div>
+				<div class="modal-footer"  >
+					<center>
+						<button class="btn btn-danger" onclick = "bajarQr()" id = "btnBajarQr">DESCARGAR</button>
+					</center>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="modal fade" id="popupidconcierto" tabindex="-1" role="dialog" data-backdrop='static'>
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header" style="background-color:#C51D34; color:#fff;">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick = 'cerrar_pop()'>
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="tituloEvento"><br></h4>
+				</div>
+				<div class="modal-body" >
+					<div id = 'recibeJson'></div>
+					<table id = 'cuerpo_localidades' width = '100%' class = 'table'>
+						<tr>
+							<td>
+								<input type = "checkbox" id="chk_all" onclick="selectAll()"  />
+							</td>
+							<td colspan = '2'>
+								<button type="button" class="btn btn-info" onclick = 'bajarTodas()' id = 'bajarTodas22'>
+									BAJAR LOCALIDADES SELECCIONADAS
+									<span id="waitsubir4" style="display:none;">bajando...<img src="../img/loading.gif" style="max-width:25px;" /></span>
+								</button>
+							</td>
+						</tr>
+						<tr>
+							<th>
+								<span class="glyphicon glyphicon-ok" aria-hidden="true" style = 'color:#35B084;'></span>
+							</th>
+							<th>
+								id_loc
+							</th>
+							<th>
+								Localidad
+							</th>
+						</tr>
+					</table>
+					
+					<div class="alert alert-warning" role="alert">
+						<input type='hidden' class='form-control input-lg numero_evento' id='myidconcierto' placeholder='Id Concierto' readonly disabled />
+						<!-- <input type='number' class='form-control input-lg' id='localidad' placeholder='Id Localidad'/> -->
+						<!-- <input type='number' class='form-control input-lg' id='clave_segura' placeholder='Ingrese Clave'/> -->
+					</div>
+				</div>
+				<div class="modal-footer">
+					<!-- <button type="button" class="btn btn-primary" onclick='bajardatos();'>Bajar Datos </button> -->
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal fade" id="sms" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style = 'position: absolute; z-index: 30000;' >
+		<div class="modal-dialog" role="document">
+			<div class="modal-content smsback">
+				<div id = "saltosDeLinea"><br><br><br><br></div>
+				<div class="modal-header smsback" style="border-bottom:none;">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="titlemodal" style="text-align:center;"></h4>
+				</div>
+				<div class="modal-body smsback" style="text-align:center;">
+					<br>
+					<h2 id="mensaje"></h2>
+					<p id="mensajeQR"></p>
+					<br>
+					<h3 id="nombre"></h3>
+				</div>
+				<div class="modal-footer smsback" style="border-top:none;">
+					<!--<button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>-->
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="modal fade" id="error1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style = 'position:absolute;z-index:2999;' >
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header" style="background-color:#C51D34; color:#fff;">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">Alerta!</h4>
+				</div>
+				<div class="modal-body">
+					<div class="alert alert-warning" role="alert" style = 'color:#000;'>
+						<span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>&nbsp;
+						<strong>Alerta! </strong>Los campos están vacios.
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div data-keyboard="false" data-backdrop="static" class="modal fade" id="ver_log_errores" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style = 'display:none;padding-right:2%;padding-left:2%' >
+		<div class="modal-dialog" role="document" >
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick = "window.location=''" ><span aria-hidden="true">&times;</span></button>
+					
+					<span class="glyphicon glyphicon-alert" aria-hidden="true"></span>
+					&nbsp;&nbsp;<strong>CONTROL DE ACCESO TICKETS CON ERRORES</strong>&nbsp;
+				</div>
+				<div class="modal-body">
+					<div class = 'row' >
+						<div class = 'col-md-6' style = 'background-color:#f0ad4e;padding:40px;text-align:center;font-weight:bolder;font-size:4vw;text-transform:uppercase;' >
+							incorrectos : <br><br>
+							<label id = 'conteoIncorrectos' style = 'font-weight:bolder;font-size:6vw;color:#000;' ></label>
+						</div>
+						<div class = 'col-md-6' style = 'background-color:#C51D34;padding:40px;text-align:center;font-weight:bolder;font-size:4vw;text-transform:uppercase;' >
+							usados <br><br>
+							<label id = 'conteoUsados' style = 'font-weight:bolder;font-size:6vw;color:#000;'></label>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer"  >
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div data-keyboard="false" data-backdrop="static" class="modal fade" id="ver_boletos_localidad" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style = 'display:none;padding-right:2%;padding-left:2%' >
+		<div class="modal-dialog" role="document" >
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick = "window.location=''" ><span aria-hidden="true">&times;</span></button>
+					
+					<span class="glyphicon glyphicon-alert" aria-hidden="true"></span>
+					&nbsp;&nbsp;<strong>CONTROL DE ACCESO TICKETS VS LOCALIDADES</strong>&nbsp;
+				</div>
+				<div class="modal-body">
+					<table id = 'boletos_entrados' class = 'table' >
+						
+					</table>
+				</div>
+				<div class="modal-footer"  >
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div data-keyboard="false" data-backdrop="static" class="modal fade" id="cajas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style = 'display:none;padding-right:2%;padding-left:2%' >
+		<div class="modal-dialog" role="document" >
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick = "window.location=''" ><span aria-hidden="true">&times;</span></button>
+					
+					<span class="glyphicon glyphicon-alert" aria-hidden="true"></span>
+					&nbsp;&nbsp;<strong>CONTROL DE ACCESO CAJAS</strong>&nbsp;
+				</div>
+				<div class="modal-body">
+					<div class="table-responsive">
+						<table class="table table-bordered table table-condensed" >
+							<tr>
+								<td><button type="button" class="btn btn-warning" onclick = "$('#localidad_descuentos').modal('show')" > Ingreso Boletos </button></td>
+								<!--<td><button type="button" class="btn btn-primary" onclick = "$('#ventaTickets').modal('show')" > Ventas</button> </td>-->
+								<td>
+									<button type="button" class="btn btn-warning"  onclick = "$('#contieneTicketsIngresados').modal('show') , verTicketsEntregados()"  > Ver Tickets Ingresados</button>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<button type="button" class="btn btn-success" onclick = "$('#contieneReporteVentas').modal('show'), verTicketsVendidos();" > Reporte Vendidos </button> 
+								</td>
+								<td ><button type="button" class="btn btn-danger" onclick = "$('#contieneReporteDiferencias').modal('show'), verTicketsEntregadosVsVendidos();" > Reporte Diferencias </button></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="modal-footer"  >
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div data-keyboard="false" data-backdrop="static" class="modal fade" id="contieneReporteDiferencias" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style = 'display:none;padding-right:2%;padding-left:2%' >
+		<div class="modal-dialog modal-lg" role="document" >
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close" ><span aria-hidden="true">&times;</span></button>
+					
+					<span class="glyphicon glyphicon-alert" aria-hidden="true"></span>
+					&nbsp;&nbsp;<strong>REPORTE DIFERENCIAS</strong>&nbsp;
+				</div>
+				<div class="modal-body" >
+					<div class="table-responsive">
+						<table class = 'table table-bordered table table-condensed' id = 'cuerpoDiferencias'  >
+						
+						</table>
+					</div>
+				</div>
+				<div class="modal-footer"  >
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div data-keyboard="false" data-backdrop="static" class="modal fade" id="localidad_descuentos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style = 'display:none;padding-right:2%;padding-left:2%' >
+		<div class="modal-dialog modal-lg" role="document" >
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close" ><span aria-hidden="true">&times;</span></button>
+					
+					<span class="glyphicon glyphicon-alert" aria-hidden="true"></span>
+					&nbsp;&nbsp;<strong id = 'titulo_ingresos' >INGRESO BOLETOS</strong>&nbsp;
+				</div>
+				<div class="modal-body">
+					<div class = 'row' >
+						<div class = 'col-md-4' >
+							
+							<select class = 'form-control cajasLimpias' id = 'localidadIngresos' style = 'text-transform:uppercase;'>
+								<option value = '' >Seleccione Localidad </option>
+							</select>
+						</div>
+						<div class = 'col-md-4' >
+							
+							<select class = 'form-control cajasLimpias' id = 'descuentosIngreso' style = 'text-transform:uppercase;' >
+								<option value = '' >Seleccione Descuento</option>
+							</select>
+						</div>
+						<div class = 'col-md-4' >
+							
+							<input type = 'number' id = 'cantidadIngresos' placeholder = 'ingrese cantidad '  class = 'form-control cajasLimpias' />
+						</div>
+						<div class = 'col-md-2' >
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer"  >
+					<button type="button" class="btn btn-danger btn-xs"  onclick = 'grabaCantidades()' > Grabar</button>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div data-keyboard="false" data-backdrop="static" class="modal fade" id="contieneTicketsIngresados" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style = 'display:none;padding-right:2%;padding-left:2%' >
+		<div class="modal-dialog" role="document" >
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close" ><span aria-hidden="true">&times;</span></button>
+					
+					<span class="glyphicon glyphicon-alert" aria-hidden="true"></span>
+					&nbsp;&nbsp;<strong>TICKETS INGRESADOS</strong>&nbsp;
+				</div>
+				<div class="modal-body">
+					<div class="table-responsive">
+						<table class="table table-bordered table table-condensed" id = 'ticketsIngresados' >
+							
+						</table>
+					</div>
+				</div>
+				<div class="modal-footer"  >
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div data-keyboard="false" data-backdrop="static" class="modal fade" id="contieneReporteVentas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style = 'display:none;padding-right:2%;padding-left:2%' >
+		<div class="modal-dialog" role="document" >
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close" ><span aria-hidden="true">&times;</span></button>
+					
+					<span class="glyphicon glyphicon-alert" aria-hidden="true"></span>
+					&nbsp;&nbsp;<strong>TICKETS VENDIDOS </strong>&nbsp;
+				</div>
+				<div class="modal-body">
+					<div class="table-responsive">
+						<table class="table table-bordered table table-condensed" id = 'ticketsVendidos' >
+							
+						</table>
+					</div>
+				</div>
+				<div class="modal-footer"  >
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div data-keyboard="false" data-backdrop="static" class="modal fade" id="ventaTickets" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style = 'display:none;padding-right:2%;padding-left:2%' >
+		<div class="modal-dialog" role="document" >
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close" ><span aria-hidden="true">&times;</span></button>
+					<p class = 'alert-info' id = 'parrafoTickets' >
+						<span class="glyphicon glyphicon-alert" aria-hidden="true"></span>
+						&nbsp;&nbsp;<strong>VENTA DE TICKETS </strong>&nbsp; <span id = 'tipoTickets' > Normales </span>
+					</p>
+				</div>
+				<div class="modal-body">
+					<!-- -->
+				</div>
+				<div class="modal-footer"  >
+					<center><button style = 'display:none;' id = 'contieneValidadorCedula' class="btn btn-simple" onclick="validarCedulaVendida()">VALIDAR CEDULA<div class="ripple-container"></div></button></center>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+	<script type="text/javascript">
+		
+		function saberTipoPerfil(){
+			var db = window.openDatabase("Database", "1.0", "TicketMobile", 200000);
+			db.transaction(function(tx){
+				tx.executeSql('SELECT l.nombre as Loc ,  d.nombre as Desc , d.precio as Pre , t.cantidad as Cant from localidad as l , descuentos as d , tickets_entregados as t  where l.id_loc = t.id_loc and  t.id_desc = d.id ',[],function(tx,results){
+					var registro = results.rows.length;
+					<!-- alert(registro); -->
+					if(registro > 0){
+						$('#mensajeConteo').html('');
+						var db = window.openDatabase("Database", "1.0", "TicketMobile", 200000);
+						db.transaction(function(tx){
+							tx.executeSql('SELECT * FROM empleado',[],function(tx,results){
+								var registros = results.rows.length;
+								if(registros > 0){
+									for(var j = 0; j < registros; j++){
+										var row1 = results.rows.item(j);
+										var perfil = row1.perfil;
+										if(perfil == 'lectora'){
+											$('#lectora').css('display','block');
+											$('#cajero').css('display','none');
+											
+											$('.paraLectora').css('display','block');
+											$('.paraCajas').css('display','none');
+											
+											
+											
+											
+											$('#onlycodigo').focus();
+										}else{
+											$('#lectora').css('display','none');
+											$('#cajero').css('display','block');
+											
+											$('.paraLectora').css('display','none');
+											$('.paraCajas').css('display','block');
+											
+											
+											$('#ingBarcode').focus();
+										}
+									}
+								}
+							},errorCB,successCB);
+						});
+					}else{
+						var perfil_empleado = $('#perfil_empleado').val();
+						if(perfil_empleado == 'cajero' ){
+							$('#mensajeConteo').html('<label style = "color:red;text-transform:uppercase;" >Debe ingresar los tickets entregados para poder continuar</label>');
+							var db = window.openDatabase("Database", "1.0", "TicketMobile", 200000);
+							db.transaction(function(tx){
+								tx.executeSql('SELECT * FROM empleado',[],function(tx,results){
+									var registros = results.rows.length;
+									if(registros > 0){
+										for(var j = 0; j < registros; j++){
+											var row1 = results.rows.item(j);
+											var perfil = row1.perfil;
+											if(perfil == 'lectora'){
+												$('#lectora').css('display','block');
+												$('#cajero').css('display','none');
+												
+												$('.paraLectora').css('display','block');
+												$('.paraCajas').css('display','none');
+												
+												
+												
+												
+												$('#onlycodigo').attr('disabled',true);
+												$('#onlycodigo').attr('readonly',true);
+											}else{
+												$('#lectora').css('display','none');
+												$('#cajero').css('display','block');
+												
+												$('.paraLectora').css('display','none');
+												$('.paraCajas').css('display','block');
+												
+												
+												$('#ingBarcode').attr('disabled',true);
+												$('#ingBarcode').attr('readonly',true);
+											}
+										}
+									}
+								},errorCB,successCB);
+							});
+						}else{
+							$('#mensajeConteo').html('');
+							var db = window.openDatabase("Database", "1.0", "TicketMobile", 200000);
+							db.transaction(function(tx){
+								tx.executeSql('SELECT * FROM empleado',[],function(tx,results){
+									var registros = results.rows.length;
+									if(registros > 0){
+										for(var j = 0; j < registros; j++){
+											var row1 = results.rows.item(j);
+											var perfil = row1.perfil;
+											if(perfil == 'lectora'){
+												$('#lectora').css('display','block');
+												$('#cajero').css('display','none');
+												
+												$('.paraLectora').css('display','block');
+												$('.paraCajas').css('display','none');
+												
+												
+												
+												
+												$('#onlycodigo').focus();
+											}else{
+												$('#lectora').css('display','none');
+												$('#cajero').css('display','block');
+												
+												$('.paraLectora').css('display','none');
+												$('.paraCajas').css('display','block');
+												
+												
+												$('#ingBarcode').focus();
+											}
+										}
+									}
+								},errorCB,successCB);
+							});
+						}
+					}
+					
+				},errorCB,successCB);
+			});
+		}
+		$( document ).ready(function() {
+			detectarConexion();
+		});
+		
+		function detectarConexion(){
+			var s = document.getElementById('status');
+			var d = document.getElementById('detectorInternet');
+			
+			s.className = navigator.onLine ? '<i class="material-icons online">wifi</i> <span class ="contenedorOnline">Online</span>' : '<i class="material-icons offline">wifi_off</i><span class ="contenedorOnline">OffLine</span>';
+			s.innerHTML = navigator.onLine ? '<i class="material-icons online">wifi</i> <span class ="contenedorOnline">Online</span>' : '<i class="material-icons offline">wifi_off</i><span class ="contenedorOnline">OffLine</span>';  
+			d.value =  navigator.onLine ? 1 : 0 ;
+			
+			
+		}
+		setInterval(function () {
+			detectarConexion();
+		}, 60000);
+	</script>
+	<!--   Core JS Files   -->
+	<script src="../assets/js/jquery.min.js" type="text/javascript"></script>
+	<script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="../assets/js/material.min.js"></script>
+
+	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+	<script src="../assets/js/nouislider.min.js" type="text/javascript"></script>
+
+	<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
+	<script src="../assets/js/bootstrap-datepicker.js" type="text/javascript"></script>
+
+	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
+	<script src="../assets/js/material-kit.js" type="text/javascript"></script>
+</html>

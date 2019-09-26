@@ -1,0 +1,66 @@
+<head>
+		<meta charset="utf-8">
+		<script src="../js/jquery.js"></script>
+		<script src="../js/index.js"></script>
+		<script src="../js/jquery-ui.min.js"></script>
+		<script src="../js/bootstrap.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.css" />
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="../boot/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="../boot/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="../boot/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	</head>
+
+<style>
+	a {
+    background: #ccc;
+    cursor: pointer;
+    border-top: solid 2px #eaeaea;
+    border-left: solid 2px #eaeaea;
+    border-bottom: solid 2px #777;
+    border-right: solid 2px #777;
+    padding: 5px 5px;           
+    }
+
+a.down {
+    background: #bbb;
+    border-top: solid 2px #777;
+    border-left: solid 2px #777;
+    border-bottom:solid 2px  #eaeaea;
+    border-right: solid 2px #eaeaea;
+    }
+</style>
+
+<audio id="player" src="beep.mp3"> </audio>
+
+<a id="button" title="button">Reproducir Sonido</a>
+
+
+<script>
+	$(document).ready(function() {
+    var playing = false;
+
+    $('a#button').click(function() {
+        $(this).toggleClass("down");
+
+        if (playing == false) {
+            document.getElementById('player').play();
+            playing = true;
+            $(this).text("Parar Sonido");
+
+        } else {
+            document.getElementById('player').pause();
+            playing = false;
+            $(this).text("Reiniciar Sonido");
+        }
+
+
+    });
+});
+</script>
