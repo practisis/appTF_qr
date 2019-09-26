@@ -337,51 +337,53 @@ function validarIngresocodigo(){
 									var total = row.total;
 									var idFactura = row.idFactura;
 									
-									var html = '<table class="table table-bordered table-condensed" style="background-color:#fff;">\
-													<tr style="background-color:#ccc;">\
-														<td>LOCALIDAD</td>\
-														<td>ASIENTOS</td>\
-														<td>FORMA DE PAGO</td>\
-														<td>Cant.</td>\
-														<td>PvP</td>\
-														<td>VALOR</td>\
-													</tr>\
-													<tr>\
-														<td>'+localidad+'</td>\
-														<td>'+serie+'</td>\
-														<td>'+forma_p+'</td>\
-														<td>'+cuantos+'</td>\
-														<td>'+pvp+'</td>\
-														<td>'+valor+'</td>\
-													</tr>\
-													\
-													<tr>\
-														<td></td>\
-														<td></td>\
-														<td></td>\
-														<td></td>\
-														<td>Comision : </td>\
-														<td>'+comision+'</td>\
-													</tr>\
-													\
-													<tr>\
-														<td></td>\
-														<td></td>\
-														<td></td>\
-														<td></td>\
-														<td>Envio : </td>\
-														<td>'+envio+'</td>\
-													</tr>\
-													\
-													<tr>\
-														<td></td>\
-														<td></td>\
-														<td></td>\
-														<td></td>\
-														<td>Total : </td>\
-														<td>'+total+'</td>\
-													</tr>\
-												</table>\
+									var html = '<div class="table-responsive">\
+													<table class="table table-bordered table-condensed" style="background-color:#fff;max-width:300px;">\
+														<tr style="background-color:#ccc;">\
+															<td>LOCALIDAD</td>\
+															<td>ASIENTOS</td>\
+															<td>FORMA DE PAGO</td>\
+															<td>Cant.</td>\
+															<td>PvP</td>\
+															<td>VALOR</td>\
+														</tr>\
+														<tr>\
+															<td>'+localidad+'</td>\
+															<td>'+serie+'</td>\
+															<td>'+forma_p+'</td>\
+															<td>'+cuantos+'</td>\
+															<td>'+pvp+'</td>\
+															<td>'+valor+'</td>\
+														</tr>\
+														\
+														<tr>\
+															<td></td>\
+															<td></td>\
+															<td></td>\
+															<td></td>\
+															<td>Comision : </td>\
+															<td>'+comision+'</td>\
+														</tr>\
+														\
+														<tr>\
+															<td></td>\
+															<td></td>\
+															<td></td>\
+															<td></td>\
+															<td>Envio : </td>\
+															<td>'+envio+'</td>\
+														</tr>\
+														\
+														<tr>\
+															<td></td>\
+															<td></td>\
+															<td></td>\
+															<td></td>\
+															<td>Total : </td>\
+															<td>'+total+'</td>\
+														</tr>\
+													</table>\
+												</div>\
 												';
 									if(estado == 0){
 										var txtQr = 'Correcto!';
